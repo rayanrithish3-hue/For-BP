@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bharathi Priya Netflix Memories</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* INTRO SCREEN */
+
+.intro-screen{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+    cursor:pointer;
+}
+
+.intro-screen h1{
+    font-size:55px;
+    color:#e50914;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.intro-screen p{
+    font-size:20px;
+    color:white;
+    letter-spacing:2px;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0.3;
+    }
+}
+
+/* NETFLIX INTRO VIDEO */
+
+.netflix-intro{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9998;
+}
+
+.netflix-intro video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+    display:none;
+    min-height:100vh;
+    background:#000;
+}
+
+/* HEADER */
+
+.header{
+    padding:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.netflix-logo{
+    font-size:90px;
+    font-weight:700;
+    color:#e50914;
+    line-height:1;
+}
+
+.chapter-text{
+    margin-top:10px;
+    font-size:20px;
+    letter-spacing:4px;
+}
+
+/* CHAPTERS */
+
+.chapters{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+.chapter-card{
+    position:relative;
+    height:450px;
+    overflow:hidden;
+    border-radius:18px;
+    cursor:pointer;
+    transition:0.4s;
+    border:2px solid transparent;
+}
+
+.chapter-card:hover{
+    transform:scale(1.04);
+    border:2px solid #e50914;
+}
+
+.chapter-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.chapter-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:25px;
+}
+
+.chapter-overlay h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.chapter-overlay p{
+    color:#ccc;
+}
+
+/* VIDEO PLAYER */
+
+.video-page{
+    position:fixed;
+    inset:0;
+    background:black;
+    z-index:9997;
+    display:none;
+    flex-direction:column;
+}
+
+.video-page video{
+    width:100%;
+    height:85vh;
+    object-fit:contain;
+    background:black;
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    padding:20px;
+}
+
+.action-btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+}
+
+.icon{
+    width:65px;
+    height:65px;
+    border:2px solid white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    transition:0.3s;
+}
+
+.action-btn span{
+    font-size:15px;
+}
+
+.heart.active{
+    background:#e50914;
+    border-color:#e50914;
+}
+
+.heart.active i{
+    color:white;
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.popup-box{
+    background:#111;
+    width:90%;
+    max-width:420px;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    border:2px solid #e50914;
+    position:relative;
+}
+
+.popup-box h2{
+    margin-bottom:25px;
+    color:#fff;
+}
+
+.stars{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.star{
+    font-size:42px;
+    cursor:pointer;
+    color:white;
+    transition:0.3s;
+}
+
+.star.active{
+    color:gold;
+}
+
+.submit-btn{
+    background:#e50914;
+    border:none;
+    color:white;
+    padding:14px 35px;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.thanks-box{
+    background:#111;
+    width:90%;
+    max-width:430px;
+    border-radius:20px;
+    padding:35px;
+    border:2px solid #e50914;
+    position:relative;
+}
+
+.mini-name{
+    position:absolute;
+    top:15px;
+    left:20px;
+    font-size:14px;
+    color:#aaa;
+}
+
+.thanks-text{
+    margin-top:30px;
+    text-align:center;
+    font-size:30px;
+    line-height:1.5;
+}
+
+.close-btn{
+    margin-top:30px;
+    background:#e50914;
+    border:none;
+    color:white;
+    padding:12px 30px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:#e50914;
+    border:none;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    z-index:10;
+    font-size:16px;
+}
+
+@media(max-width:768px){
+
+    .intro-screen h1{
+        font-size:38px;
+    }
+
+    .netflix-logo{
+        font-size:70px;
+    }
+
+    .chapters{
+        padding:20px;
+    }
+
+    .chapter-card{
+        height:380px;
+    }
+
+    .actions{
+        gap:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div class="intro-screen" id="introScreen">
+    <h1>Bharathi Priya</h1>
+    <p>Touch anywhere to begin the experience</p>
+</div>
+
+<!-- NETFLIX INTRO VIDEO -->
+
+<div class="netflix-intro" id="netflixIntro">
+    <video id="introVideo" src="assets/netflix-intro.mp4"></video>
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content" id="mainContent">
+
+    <div class="header">
+        <div class="netflix-logo">N</div>
+        <div class="chapter-text">THREE CHAPTERS</div>
+    </div>
+
+    <div class="chapters">
+
+        <!-- CHAPTER 1 -->
+
+        <div class="chapter-card"
+        onclick="openChapter(
+        'assets/chapter1.mp4'
+        )">
+
+            <img src="assets/thumb1.jpg">
+
+            <div class="chapter-overlay">
+                <h2>Chapter 1</h2>
+                <p>Our Beautiful Beginning</p>
+            </div>
+
+        </div>
+
+        <!-- CHAPTER 2 -->
+
+        <div class="chapter-card"
+        onclick="openChapter(
+        'assets/chapter2.mp4'
+        )">
+
+            <img src="assets/thumb2.jpg">
+
+            <div class="chapter-overlay">
+                <h2>Chapter 2</h2>
+                <p>Special Memories</p>
+            </div>
+
+        </div>
+
+        <!-- CHAPTER 3 -->
+
+        <div class="chapter-card"
+        onclick="openChapter(
+        'assets/chapter3.mp4'
+        )">
+
+            <img src="assets/thumb3.jpg">
+
+            <div class="chapter-overlay">
+                <h2>Chapter 3</h2>
+                <p>Forever Together</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- VIDEO PAGE -->
+
+<div class="video-page" id="videoPage">
+
+    <button class="back-btn" onclick="closeVideo()">Back</button>
+
+    <video id="chapterVideo" controls></video>
+
+    <div class="actions">
+
+        <!-- LIKE -->
+
+        <div class="action-btn" onclick="toggleLike()">
+            <div class="icon heart" id="heartBtn">
+                ❤
+            </div>
+            <span>Like</span>
+        </div>
+
+        <!-- RATE -->
+
+        <div class="action-btn" onclick="openRatingPopup()">
+            <div class="icon">
+                ★
+            </div>
+            <span>Rate</span>
+        </div>
+
+        <!-- DOWNLOAD -->
+
+        <div class="action-btn" onclick="downloadVideo()">
+            <div class="icon">
+                ⬇
+            </div>
+            <span>Download</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RATING POPUP -->
+
+<div class="popup" id="ratingPopup">
+
+    <div class="popup-box">
+
+        <h2>Rate this Chapter</h2>
+
+        <div class="stars">
+
+            <div class="star" onclick="rateStar(1)">★</div>
+            <div class="star" onclick="rateStar(2)">★</div>
+            <div class="star" onclick="rateStar(3)">★</div>
+            <div class="star" onclick="rateStar(4)">★</div>
+            <div class="star" onclick="rateStar(5)">★</div>
+
+        </div>
+
+        <button class="submit-btn" onclick="submitRating()">
+            Submit
+        </button>
+
+    </div>
+
+</div>
+
+<!-- THANK YOU POPUP -->
+
+<div class="popup" id="thankPopup">
+
+    <div class="thanks-box">
+
+        <div class="mini-name">
+            Rithish
+        </div>
+
+        <div class="thanks-text">
+            Thanks for the Rating Bharathi Priya ❤️
+        </div>
+
+        <center>
+            <button class="close-btn" onclick="closeThankPopup()">
+                Close
+            </button>
+        </center>
+
+    </div>
+
+</div>
+
+<script>
+
+const introScreen = document.getElementById("introScreen");
+const netflixIntro = document.getElementById("netflixIntro");
+const introVideo = document.getElementById("introVideo");
+const mainContent = document.getElementById("mainContent");
+
+const videoPage = document.getElementById("videoPage");
+const chapterVideo = document.getElementById("chapterVideo");
+
+let currentVideo = "";
+
+introScreen.addEventListener("click", () => {
+
+    introScreen.style.display = "none";
+
+    netflixIntro.style.display = "flex";
+
+    introVideo.play();
+
+});
+
+introVideo.onended = () => {
+
+    netflixIntro.style.display = "none";
+
+    mainContent.style.display = "block";
+
+};
+
+/* OPEN CHAPTER */
+
+function openChapter(videoSrc){
+
+    currentVideo = videoSrc;
+
+    videoPage.style.display = "flex";
+
+    chapterVideo.src = videoSrc;
+
+    chapterVideo.play();
+
+}
+
+/* CLOSE VIDEO */
+
+function closeVideo(){
+
+    videoPage.style.display = "none";
+
+    chapterVideo.pause();
+
+}
+
+/* LIKE */
+
+function toggleLike(){
+
+    const heart = document.getElementById("heartBtn");
+
+    heart.classList.toggle("active");
+
+}
+
+/* RATING */
+
+function openRatingPopup(){
+
+    document.getElementById("ratingPopup").style.display = "flex";
+
+}
+
+let selectedRating = 0;
+
+function rateStar(number){
+
+    selectedRating = number;
+
+    const stars = document.querySelectorAll(".star");
+
+    stars.forEach((star,index)=>{
+
+        if(index < number){
+
+            star.classList.add("active");
+
+        }else{
+
+            star.classList.remove("active");
+
+        }
+
+    });
+
+}
+
+function submitRating(){
+
+    document.getElementById("ratingPopup").style.display = "none";
+
+    document.getElementById("thankPopup").style.display = "flex";
+
+}
+
+function closeThankPopup(){
+
+    document.getElementById("thankPopup").style.display = "none";
+
+}
+
+/* DOWNLOAD */
+
+function downloadVideo(){
+
+    const link = document.createElement("a");
+
+    link.href = currentVideo;
+
+    link.download = "memory-video.mp4";
+
+    link.click();
+
+}
+
+</script>
+
+</body>
+</html>

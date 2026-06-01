@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bharathi Priya Netflix Memories</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Netflix Memories</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,12 +19,12 @@
 }
 
 body{
-    background:#000;
-    overflow-x:hidden;
+    background:black;
     color:white;
+    overflow-x:hidden;
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 
 .intro-screen{
     position:fixed;
@@ -32,20 +34,18 @@ body{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    z-index:9999;
+    z-index:99999;
     cursor:pointer;
 }
 
 .intro-screen h1{
-    font-size:55px;
-    color:#e50914;
+    color:#E50914;
+    font-size:52px;
     margin-bottom:20px;
-    text-align:center;
 }
 
 .intro-screen p{
-    font-size:20px;
-    color:white;
+    font-size:18px;
     letter-spacing:2px;
     animation:blink 1.5s infinite;
 }
@@ -56,7 +56,7 @@ body{
     }
 }
 
-/* NETFLIX INTRO VIDEO */
+/* NETFLIX INTRO */
 
 .netflix-intro{
     position:fixed;
@@ -65,7 +65,7 @@ body{
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:9998;
+    z-index:99998;
 }
 
 .netflix-intro video{
@@ -74,145 +74,201 @@ body{
     object-fit:cover;
 }
 
-/* MAIN CONTENT */
+/* HOME */
 
-.main-content{
+.home{
     display:none;
-    min-height:100vh;
-    background:#000;
+    padding:30px;
 }
 
-/* HEADER */
-
-.header{
-    padding:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-}
-
-.netflix-logo{
-    font-size:90px;
+.logo{
+    text-align:center;
+    font-size:80px;
     font-weight:700;
-    color:#e50914;
-    line-height:1;
+    color:#E50914;
 }
 
-.chapter-text{
+.chapter-title{
+    text-align:center;
     margin-top:10px;
-    font-size:20px;
     letter-spacing:4px;
 }
 
-/* CHAPTERS */
-
 .chapters{
+    margin-top:40px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-    padding:40px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-.chapter-card{
-    position:relative;
-    height:450px;
+.card{
+    height:420px;
+    border-radius:20px;
     overflow:hidden;
-    border-radius:18px;
+    position:relative;
     cursor:pointer;
     transition:0.4s;
-    border:2px solid transparent;
 }
 
-.chapter-card:hover{
-    transform:scale(1.04);
-    border:2px solid #e50914;
+.card:hover{
+    transform:scale(1.03);
 }
 
-.chapter-card img{
+.card img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.chapter-overlay{
+.overlay{
     position:absolute;
     inset:0;
     background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);
     display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
+    align-items:flex-end;
     padding:25px;
 }
 
-.chapter-overlay h2{
-    font-size:30px;
-    margin-bottom:10px;
+.overlay h2{
+    font-size:32px;
 }
 
-.chapter-overlay p{
-    color:#ccc;
-}
+/* CHAPTER PAGE */
 
-/* VIDEO PLAYER */
-
-.video-page{
+.chapter-page{
     position:fixed;
     inset:0;
     background:black;
-    z-index:9997;
+    z-index:99997;
+    overflow-y:auto;
     display:none;
-    flex-direction:column;
 }
 
-.video-page video{
+.top-video{
     width:100%;
-    height:85vh;
-    object-fit:contain;
-    background:black;
+    height:300px;
+    position:relative;
 }
 
-/* ACTION BUTTONS */
-
-.actions{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    padding:20px;
+.top-video img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.action-btn{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:rgba(0,0,0,0.6);
+    border:none;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    font-size:22px;
     cursor:pointer;
 }
 
-.icon{
-    width:65px;
-    height:65px;
-    border:2px solid white;
-    border-radius:50%;
+.chapter-content{
+    padding:25px;
+}
+
+.netflix-text{
+    color:#E50914;
+    font-size:18px;
+    font-weight:600;
+}
+
+.movie-title{
+    font-size:50px;
+    font-weight:700;
+    margin-top:10px;
+}
+
+.year{
+    color:#aaa;
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* BUTTONS */
+
+.main-buttons{
+    margin-top:30px;
     display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.play-btn{
+    background:white;
+    color:black;
+    border:none;
+    padding:18px;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.download-btn{
+    background:#2b2b2b;
+    color:white;
+    border:none;
+    padding:18px;
+    border-radius:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.note{
+    margin-top:30px;
+    color:#ddd;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ACTIONS */
+
+.actions{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-around;
+}
+
+.action{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.action-icon{
+    font-size:34px;
+}
+
+.action span{
+    color:#ccc;
+}
+
+/* PLAYER */
+
+.video-player{
+    position:fixed;
+    inset:0;
+    background:black;
+    z-index:999999;
+    display:none;
     justify-content:center;
     align-items:center;
-    font-size:28px;
-    transition:0.3s;
 }
 
-.action-btn span{
-    font-size:15px;
-}
-
-.heart.active{
-    background:#e50914;
-    border-color:#e50914;
-}
-
-.heart.active i{
-    color:white;
+.video-player video{
+    width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
 /* POPUP */
@@ -224,125 +280,62 @@ body{
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:99999;
+    z-index:9999999;
 }
 
 .popup-box{
     background:#111;
     width:90%;
-    max-width:420px;
+    max-width:380px;
+    padding:30px;
     border-radius:20px;
-    padding:35px;
     text-align:center;
-    border:2px solid #e50914;
-    position:relative;
+    border:2px solid #E50914;
 }
 
 .popup-box h2{
     margin-bottom:25px;
-    color:#fff;
 }
 
 .stars{
     display:flex;
     justify-content:center;
-    gap:15px;
+    gap:12px;
     margin-bottom:25px;
 }
 
 .star{
-    font-size:42px;
-    cursor:pointer;
+    font-size:45px;
     color:white;
-    transition:0.3s;
+    cursor:pointer;
 }
 
 .star.active{
     color:gold;
 }
 
-.submit-btn{
-    background:#e50914;
-    border:none;
+.submit{
+    background:#E50914;
     color:white;
-    padding:14px 35px;
-    border-radius:12px;
+    border:none;
+    padding:14px 30px;
+    border-radius:10px;
     font-size:18px;
     cursor:pointer;
 }
 
-.thanks-box{
-    background:#111;
-    width:90%;
-    max-width:430px;
-    border-radius:20px;
-    padding:35px;
-    border:2px solid #e50914;
-    position:relative;
-}
-
-.mini-name{
-    position:absolute;
-    top:15px;
-    left:20px;
-    font-size:14px;
-    color:#aaa;
-}
-
-.thanks-text{
-    margin-top:30px;
-    text-align:center;
-    font-size:30px;
-    line-height:1.5;
-}
-
-.close-btn{
-    margin-top:30px;
-    background:#e50914;
-    border:none;
-    color:white;
-    padding:12px 30px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:17px;
-}
-
-/* BACK BUTTON */
-
-.back-btn{
-    position:absolute;
-    top:20px;
-    left:20px;
-    background:#e50914;
-    border:none;
-    color:white;
-    padding:12px 20px;
-    border-radius:10px;
-    cursor:pointer;
-    z-index:10;
-    font-size:16px;
+.tick{
+    color:#00ff88;
 }
 
 @media(max-width:768px){
 
-    .intro-screen h1{
-        font-size:38px;
+    .movie-title{
+        font-size:42px;
     }
 
-    .netflix-logo{
-        font-size:70px;
-    }
-
-    .chapters{
-        padding:20px;
-    }
-
-    .chapter-card{
-        height:380px;
-    }
-
-    .actions{
-        gap:20px;
+    .top-video{
+        height:250px;
     }
 
 }
@@ -355,71 +348,81 @@ body{
 <!-- INTRO -->
 
 <div class="intro-screen" id="introScreen">
+
     <h1>Bharathi Priya</h1>
+
     <p>Touch anywhere to begin the experience</p>
+
 </div>
 
-<!-- NETFLIX INTRO VIDEO -->
+<!-- NETFLIX INTRO -->
 
 <div class="netflix-intro" id="netflixIntro">
+
     <video id="introVideo" src="assets/netflix-intro.mp4"></video>
+
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- HOME -->
 
-<div class="main-content" id="mainContent">
+<div class="home" id="home">
 
-    <div class="header">
-        <div class="netflix-logo">N</div>
-        <div class="chapter-text">THREE CHAPTERS</div>
-    </div>
+    <div class="logo">N</div>
+
+    <div class="chapter-title">THREE CHAPTERS</div>
 
     <div class="chapters">
 
-        <!-- CHAPTER 1 -->
+        <!-- CARD 1 -->
 
-        <div class="chapter-card"
+        <div class="card"
         onclick="openChapter(
-        'assets/chapter1.mp4'
+        'Our Beginning',
+        'assets/thumb1.jpg',
+        'assets/chapter1.mp4',
+        'Every memory with you feels like my favourite movie scene.'
         )">
 
             <img src="assets/thumb1.jpg">
 
-            <div class="chapter-overlay">
+            <div class="overlay">
                 <h2>Chapter 1</h2>
-                <p>Our Beautiful Beginning</p>
             </div>
 
         </div>
 
-        <!-- CHAPTER 2 -->
+        <!-- CARD 2 -->
 
-        <div class="chapter-card"
+        <div class="card"
         onclick="openChapter(
-        'assets/chapter2.mp4'
+        'Beautiful Days',
+        'assets/thumb2.jpg',
+        'assets/chapter2.mp4',
+        'No matter where life goes, these moments stay special forever.'
         )">
 
             <img src="assets/thumb2.jpg">
 
-            <div class="chapter-overlay">
+            <div class="overlay">
                 <h2>Chapter 2</h2>
-                <p>Special Memories</p>
             </div>
 
         </div>
 
-        <!-- CHAPTER 3 -->
+        <!-- CARD 3 -->
 
-        <div class="chapter-card"
+        <div class="card"
         onclick="openChapter(
-        'assets/chapter3.mp4'
+        'Forever Us',
+        'assets/thumb3.jpg',
+        'assets/chapter3.mp4',
+        'Some people become memories. You became my favourite chapter.'
         )">
 
             <img src="assets/thumb3.jpg">
 
-            <div class="chapter-overlay">
+            <div class="overlay">
                 <h2>Chapter 3</h2>
-                <p>Forever Together</p>
             </div>
 
         </div>
@@ -428,44 +431,108 @@ body{
 
 </div>
 
-<!-- VIDEO PAGE -->
+<!-- CHAPTER PAGE -->
 
-<div class="video-page" id="videoPage">
+<div class="chapter-page" id="chapterPage">
 
-    <button class="back-btn" onclick="closeVideo()">Back</button>
+    <div class="top-video">
 
-    <video id="chapterVideo" controls></video>
+        <img id="chapterThumb">
 
-    <div class="actions">
+        <button class="back-btn"
+        onclick="closeChapter()">
+        ←
+        </button>
 
-        <!-- LIKE -->
+    </div>
 
-        <div class="action-btn" onclick="toggleLike()">
-            <div class="icon heart" id="heartBtn">
-                ❤
-            </div>
-            <span>Like</span>
+    <div class="chapter-content">
+
+        <div class="netflix-text">
+            NETFLIX
         </div>
 
-        <!-- RATE -->
-
-        <div class="action-btn" onclick="openRatingPopup()">
-            <div class="icon">
-                ★
-            </div>
-            <span>Rate</span>
+        <div class="movie-title" id="movieTitle">
+            Title
         </div>
 
-        <!-- DOWNLOAD -->
+        <div class="year">
+            2026
+        </div>
 
-        <div class="action-btn" onclick="downloadVideo()">
-            <div class="icon">
-                ⬇
+        <div class="main-buttons">
+
+            <button class="play-btn"
+            onclick="playVideo()">
+            ▶ Play
+            </button>
+
+            <button class="download-btn"
+            onclick="downloadVideo()">
+            ⬇ Download
+            </button>
+
+        </div>
+
+        <div class="note" id="noteText">
+            Note
+        </div>
+
+        <!-- ACTIONS -->
+
+        <div class="actions">
+
+            <!-- MY LIST -->
+
+            <div class="action"
+            onclick="toggleList()">
+
+                <div class="action-icon"
+                id="listIcon">
+                +
+                </div>
+
+                <span>My List</span>
+
             </div>
-            <span>Download</span>
+
+            <!-- RATE -->
+
+            <div class="action"
+            onclick="openRating()">
+
+                <div class="action-icon">
+                👍
+                </div>
+
+                <span>Rate</span>
+
+            </div>
+
+            <!-- SHARE -->
+
+            <div class="action"
+            onclick="shareWebsite()">
+
+                <div class="action-icon">
+                ⤴
+                </div>
+
+                <span>Share</span>
+
+            </div>
+
         </div>
 
     </div>
+
+</div>
+
+<!-- VIDEO PLAYER -->
+
+<div class="video-player" id="videoPlayer">
+
+    <video id="mainVideo" controls></video>
 
 </div>
 
@@ -479,41 +546,56 @@ body{
 
         <div class="stars">
 
-            <div class="star" onclick="rateStar(1)">★</div>
-            <div class="star" onclick="rateStar(2)">★</div>
-            <div class="star" onclick="rateStar(3)">★</div>
-            <div class="star" onclick="rateStar(4)">★</div>
-            <div class="star" onclick="rateStar(5)">★</div>
+            <div class="star"
+            onclick="rateStar(1)">
+            ★
+            </div>
+
+            <div class="star"
+            onclick="rateStar(2)">
+            ★
+            </div>
+
+            <div class="star"
+            onclick="rateStar(3)">
+            ★
+            </div>
+
+            <div class="star"
+            onclick="rateStar(4)">
+            ★
+            </div>
+
+            <div class="star"
+            onclick="rateStar(5)">
+            ★
+            </div>
 
         </div>
 
-        <button class="submit-btn" onclick="submitRating()">
-            Submit
+        <button class="submit"
+        onclick="submitRating()">
+        Submit
         </button>
 
     </div>
 
 </div>
 
-<!-- THANK YOU POPUP -->
+<!-- THANKS POPUP -->
 
-<div class="popup" id="thankPopup">
+<div class="popup" id="thanksPopup">
 
-    <div class="thanks-box">
+    <div class="popup-box">
 
-        <div class="mini-name">
-            Rithish
-        </div>
+        <h2>
+        Thanks for the Rating ❤️
+        </h2>
 
-        <div class="thanks-text">
-            Thanks for the Rating Bharathi Priya ❤️
-        </div>
-
-        <center>
-            <button class="close-btn" onclick="closeThankPopup()">
-                Close
-            </button>
-        </center>
+        <button class="submit"
+        onclick="closeThanks()">
+        Close
+        </button>
 
     </div>
 
@@ -521,87 +603,132 @@ body{
 
 <script>
 
+/* INTRO */
+
 const introScreen = document.getElementById("introScreen");
 const netflixIntro = document.getElementById("netflixIntro");
 const introVideo = document.getElementById("introVideo");
-const mainContent = document.getElementById("mainContent");
+const home = document.getElementById("home");
 
-const videoPage = document.getElementById("videoPage");
-const chapterVideo = document.getElementById("chapterVideo");
+introScreen.addEventListener("click",()=>{
 
-let currentVideo = "";
+    introScreen.style.display="none";
 
-introScreen.addEventListener("click", () => {
-
-    introScreen.style.display = "none";
-
-    netflixIntro.style.display = "flex";
+    netflixIntro.style.display="flex";
 
     introVideo.play();
 
 });
 
-introVideo.onended = () => {
+introVideo.onended=()=>{
 
-    netflixIntro.style.display = "none";
+    netflixIntro.style.display="none";
 
-    mainContent.style.display = "block";
+    home.style.display="block";
 
 };
 
-/* OPEN CHAPTER */
+/* CHAPTER */
 
-function openChapter(videoSrc){
+const chapterPage = document.getElementById("chapterPage");
 
-    currentVideo = videoSrc;
+let currentVideo = "";
 
-    videoPage.style.display = "flex";
+function openChapter(title,thumb,video,note){
 
-    chapterVideo.src = videoSrc;
+    chapterPage.style.display="block";
 
-    chapterVideo.play();
+    document.getElementById("movieTitle").innerText = title;
 
-}
+    document.getElementById("chapterThumb").src = thumb;
 
-/* CLOSE VIDEO */
+    document.getElementById("noteText").innerText = note;
 
-function closeVideo(){
-
-    videoPage.style.display = "none";
-
-    chapterVideo.pause();
+    currentVideo = video;
 
 }
 
-/* LIKE */
+function closeChapter(){
 
-function toggleLike(){
+    chapterPage.style.display="none";
 
-    const heart = document.getElementById("heartBtn");
+}
 
-    heart.classList.toggle("active");
+/* PLAY VIDEO */
+
+function playVideo(){
+
+    const player = document.getElementById("videoPlayer");
+
+    const video = document.getElementById("mainVideo");
+
+    player.style.display="flex";
+
+    video.src = currentVideo;
+
+    video.play();
+
+    video.onended=()=>{
+
+        player.style.display="none";
+
+    }
+
+}
+
+/* DOWNLOAD */
+
+function downloadVideo(){
+
+    const a = document.createElement("a");
+
+    a.href = currentVideo;
+
+    a.download = "memory.mp4";
+
+    a.click();
+
+}
+
+/* MY LIST */
+
+let added = false;
+
+function toggleList(){
+
+    const icon = document.getElementById("listIcon");
+
+    added = !added;
+
+    if(added){
+
+        icon.innerHTML = "✔";
+        icon.classList.add("tick");
+
+    }else{
+
+        icon.innerHTML = "+";
+        icon.classList.remove("tick");
+
+    }
 
 }
 
 /* RATING */
 
-function openRatingPopup(){
+function openRating(){
 
-    document.getElementById("ratingPopup").style.display = "flex";
+    document.getElementById("ratingPopup").style.display="flex";
 
 }
 
-let selectedRating = 0;
-
-function rateStar(number){
-
-    selectedRating = number;
+function rateStar(num){
 
     const stars = document.querySelectorAll(".star");
 
     stars.forEach((star,index)=>{
 
-        if(index < number){
+        if(index < num){
 
             star.classList.add("active");
 
@@ -617,29 +744,39 @@ function rateStar(number){
 
 function submitRating(){
 
-    document.getElementById("ratingPopup").style.display = "none";
+    document.getElementById("ratingPopup").style.display="none";
 
-    document.getElementById("thankPopup").style.display = "flex";
-
-}
-
-function closeThankPopup(){
-
-    document.getElementById("thankPopup").style.display = "none";
+    document.getElementById("thanksPopup").style.display="flex";
 
 }
 
-/* DOWNLOAD */
+function closeThanks(){
 
-function downloadVideo(){
+    document.getElementById("thanksPopup").style.display="none";
 
-    const link = document.createElement("a");
+}
 
-    link.href = currentVideo;
+/* SHARE */
 
-    link.download = "memory-video.mp4";
+function shareWebsite(){
 
-    link.click();
+    if(navigator.share){
+
+        navigator.share({
+
+            title:"Netflix Memories",
+
+            text:"Watch our memories ❤️",
+
+            url:window.location.href
+
+        });
+
+    }else{
+
+        alert("Sharing not supported in this browser");
+
+    }
 
 }
 
